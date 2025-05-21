@@ -187,6 +187,9 @@ func _process(delta):
 	
 	await RenderingServer.frame_pre_draw
 	
+	# (ESTEE) in case we despawned while awaiting...
+	if not is_inside_tree(): return
+	
 	if(billboard):
 		var delta_position = global_position - _old_pos
 		
